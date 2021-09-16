@@ -7,6 +7,7 @@ import Login from "./authentication/Login";
 import PrivateRoute from "./authentication/PrivateRoute";
 import ForgotPassword from "./authentication/ForgotPassword";
 import UpdateProfile from "./authentication/UpdateProfile";
+import Dashboard from "./Drive/Dashboard";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <AuthProvider>
         <Switch>
           {/* drive */}
+          <PrivateRoute exact path="/" component={Dashboard} />
 
           {/* profile*/}
           <PrivateRoute path="/user" component={Profile} />
