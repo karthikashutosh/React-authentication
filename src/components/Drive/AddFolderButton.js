@@ -20,11 +20,15 @@ export default function AddFolderButton({ currentFolder }) {
 
   function handleSubmit(e) {
     e.preventDefault();
+    
+    if(currentFolder == null) return
 
     //create in database
 
     database.folders.add({
       name: name,
+      parentId: currentFolder.id,
+
       userId: currentUser.uid,
 
       createdAt: database.getCurrentTimestamp(),
@@ -36,7 +40,7 @@ export default function AddFolderButton({ currentFolder }) {
   return (
     <>
       <Button onClick={openModal} variant="outline-success" size="sm">
-        <FontAwesomeIcon icon={faFolderPlus}  />
+        <FontAwesomeIcon icon={faFolderPlus} />
       </Button>
       <Modal show={open} onHide={closeModal}>
         <Form onSubmit={handleSubmit}>
